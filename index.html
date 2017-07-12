@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>飞起购物车</title>
+		<link rel="stylesheet" href="css/css.css" />
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	</head>
+
+	<body>
+		<div class="moild">
+			<ul>
+				<li>
+					<span class="IMG"><img src="img/1.jpg"></span>
+					<span class="ghub">
+						我没有吉他就唱不出去歌
+					</span>
+					<div class="jimu">飞</div>
+				</li>
+				<li>
+					<span class="IMG"><img src="img/2.jpeg"></span>
+					<span class="ghub">
+						我没有吉他就唱不出去歌
+					</span>
+					<div class="jimu">飞</div>
+				</li>
+			</ul>
+		</div>
+		<div id="model">
+			<span class="hezi">0</span>
+		</div>
+		
+		<script>
+			var secch_if = $('#succh');
+		
+			var hezi_l=$('.hezi').offset();
+	        var Null=0;
+			$('.jimu').click(function() {
+				Null++;
+				var _this = $(this);
+				var IMG = _this.parent().find('img');
+				var addclid=IMG.clone().css('opacity','0.6');
+                 $('body').append(addclid);
+                 addclid.css({
+                 	'z-index':99999,
+                 	'position':'absolute',
+                 	'height':IMG.height()+'px',
+                 	'width':IMG.width()+'px',
+                 	'top':IMG.offset().top+'px',
+                 	'left':IMG.offset().left+'px',
+                 })
+                 addclid.animate({
+                 	 'width':50+'px',
+                 	 'height':50+'px',
+                      'border-radius':100+'%',
+                 },function(){
+                 	 addclid.animate({
+                 	'top':($(document).height())/2+30+'px',
+                     'left':($(document).width())-($('#model').width())+'px',//当前窗口的宽度-购物车的宽度   
+                     'width':0,
+                     'height':0,
+                 	 },1500,function(){
+                     	
+                 	addclid.remove();
+                 	$('.hezi').html(Null);
+                })
+                 	 
+                 	})
+                return false
+			});
+			
+		   
+		</script>
+                 	
+              
+
+	</body>
+
+</html>
